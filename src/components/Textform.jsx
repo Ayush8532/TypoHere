@@ -28,14 +28,14 @@ export default function Textform(props) {
                 <h1>{props.title}</h1>
                 <textarea className="form-control" value={text} onChange={handleChange} id="myBox" rows="8"></textarea>
             </div>
-            <button type="button" onClick={clearval} className="btn btn-info mx-2 my-2">Clear Text</button>
-            <button type="button" onClick={uppervalue} className="btn btn-info mx-2 my-2">Convert to Uppercase</button>
-            <button type="button" onClick={lowervalue} className="btn btn-info mx-2 my-2">Convert to Lowercase</button>
+            <button disabled={text.length===0} type="button" onClick={clearval} className="btn btn-info mx-2 my-2">Clear Text</button>
+            <button disabled={text.length===0} type="button" onClick={uppervalue} className="btn btn-info mx-2 my-2">Convert to Uppercase</button>
+            <button disabled={text.length===0} type="button" onClick={lowervalue} className="btn btn-info mx-2 my-2">Convert to Lowercase</button>
             
         </div>
         <div className='container my-3'>
             <h2>Your text Summary</h2>
-            <p>{text.split(" ").length} words {text.length} character</p>
+            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words {text.length} character</p>
             <p>{0.008*text.split(" ").length} Minutes read</p>
             <hr />
             <h2>Preview</h2>

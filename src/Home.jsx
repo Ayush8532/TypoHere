@@ -6,9 +6,7 @@ import About from './components/About'
 import { Route, Routes } from 'react-router-dom'
 
 
-const myStyle = {
-    color: 'black'
-}
+
 const Home = () => {
     const [mode, setMode] = useState('light')
 
@@ -68,11 +66,13 @@ const Home = () => {
     return (
         <>
                 <Navbar title="TypoHere" subtitle="About" mode={mode} toggleMode={toggleMode} label={label} newtoggle={newtoggle} />
-                <Alert alert={alert} /> 
+                <Alert alert={alert} />
+                
                 <Routes>
                     <Route  exact path='/another' element={<Textform title="Enter text to analyze" showAlert={showAlert} />}/>
-                    <Route exact path='/about' element={<About/>}/>
+                    <Route exact path='/about' element={<About mode={mode}/>}/>
                 </Routes>
+                
         </>
     )
 }
